@@ -59,7 +59,7 @@ extension ContentView {
         guard MFMailComposeViewController.canSendMail() else {
             return
         }
-        let vc = UIApplication.shared.keyWindow?.rootViewController
+        let vc = UIApplication.shared.windows.filter {$0.isKeyWindow}.first?.rootViewController
 
         let composeVC = MFMailComposeViewController()
         composeVC.mailComposeDelegate = mailComposeDelegate
@@ -87,7 +87,7 @@ extension ContentView {
         guard MFMessageComposeViewController.canSendText() else {
             return
         }
-        let vc = UIApplication.shared.keyWindow?.rootViewController
+        let vc = UIApplication.shared.windows.filter {$0.isKeyWindow}.first?.rootViewController
 
         let composeVC = MFMessageComposeViewController()
         composeVC.messageComposeDelegate = messageComposeDelegate
